@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id          String        @id 
+  name        String
+  email       String        @unique
+  role        String        @default("nurse")
+  procedures  Procedure[]
+  specialties Specialty[]
+  diagnoses   Diagnosis[]
+  pearls      ClinicalPearl[]
+  createdAt   DateTime      @default(now())
+}
+
+model Specialty {
+  id          String         @id @default(uuid())
+  name        String
+  userId      String
+  user User                  @relation(fields: [userId], references: [id])
+  procedures  Procedure[]
+  diagnoses   Diagnosis[]
+  pearls      ClinicalPearl[]
+  createdAt   DateTime       @default(now())
+}
+
+model Procedure {
+  id          String    @id @default(uuid())
+  name        String
+  notes       String?
+  comfort     Int       // 1-5
+  enjoyment   Int       // 1-5
+  emotion     String    // "confident" | "anxious" | "happy" | "overwhelmed"
+  performedAt DateTime  @default(now())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  specialtyId String
+  specialty Specialty   @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  pearls ClinicalPearl[] 
+  createdAt   DateTime  @default(now())
+}
+
+model Diagnosis {
+  id          String          @id @default(uuid())
+  name        String
+  notes       String?
+  diagnosedAt DateTime        @default(now())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id])
+  specialtyId String
+  specialty   Specialty       @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  pearls      ClinicalPearl[]
+  createdAt   DateTime        @default(now())
+}
+
+model ClinicalPearl {
+  id          String     @id @default(uuid())
+  title       String
+  body        String
+  tags        String[]
+  userId      String
+  user        User       @relation(fields: [userId], references: [id])
+  specialtyId String
+  specialty   Specialty  @relation(fields: [specialtyId], references: [id], onDelete: Cascade)
+  diagnosisId String?
+  diagnosis   Diagnosis? @relation(fields: [diagnosisId], references: [id])
+  procedureId String?
+  procedure   Procedure? @relation(fields: [procedureId], references: [id])
+  createdAt   DateTime   @default(now())
+}
