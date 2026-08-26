@@ -4,6 +4,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Stethoscope, ClipboardList, LibraryBig, LayoutDashboard, User } from "lucide-react";
 
+interface SidebarProps {
+  userName: string;
+  userEmail: string;
+}
+
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { href: "/specialties", label: "Specialties", icon: Stethoscope },
@@ -11,7 +16,7 @@ const navItems = [
   { href: "/diagnoses", label: "Diagnoses", icon: LibraryBig},
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ userName, userEmail }: SidebarProps) {
   const pathname = usePathname();
 
   return (
@@ -49,7 +54,7 @@ export default function Sidebar() {
           <User size={16} />
         </div>
         <div>
-          <p className="text-sm font-medium text-ink">Prem</p>
+          <p className="text-sm font-medium text-ink">{userName}</p>
           <p className="text-xs text-ink/50">Nurse</p>
         </div>
       </div>
