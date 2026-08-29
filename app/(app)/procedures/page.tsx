@@ -45,11 +45,12 @@ export default async function Page() {
       </div>
 
       <div className="rounded-lg border border-black/5 bg-white">
-        <div className="grid grid-cols-[1fr_auto_auto_auto_auto] gap-6 border-b border-black/5 px-5 py-2.5 text-xs font-medium uppercase tracking-wide text-ink/40">
+        <div className="grid grid-cols-[1fr_auto_auto_auto_auto_auto] gap-6 border-b border-black/5 px-5 py-2.5 text-xs font-medium uppercase tracking-wide text-ink/40">
           <span>Procedure</span>
           <span className="w-20 text-right">Comfort</span>
           <span className="w-20 text-right">Enjoyment</span>
           <span>Emotion</span>
+          <span>Performance</span>
           <span></span>
         </div>
 
