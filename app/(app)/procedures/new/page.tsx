@@ -3,6 +3,7 @@ import ComfortSlider from "@/app/ui/comfort-slider";
 import EnjoymentSlider from "@/app/ui/enjoyment-slider";
 import EmotionSelector from "@/app/ui/emotion-selector";
 import { redirect } from "next/navigation";
+import PerformanceTypeSelector from "@/app/ui/performance-type-selector";
 
 export default async function Page({ searchParams } : { searchParams: Promise<{ [key: string]: string | undefined }> } ) {
   const today = new Date().toISOString().split("T")[0];
@@ -33,6 +34,7 @@ export default async function Page({ searchParams } : { searchParams: Promise<{ 
         <ComfortSlider />
         <EnjoymentSlider />
         <EmotionSelector />
+        <PerformanceTypeSelector />
 
         <div>
           <label className="mb-2 block text-sm font-medium text-ink/70">Notes</label>

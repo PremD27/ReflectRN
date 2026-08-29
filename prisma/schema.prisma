@@ -43,6 +43,7 @@ model Procedure {
   enjoyment   Int       // 1-5
   emotion     String    // "confident" | "anxious" | "happy" | "overwhelmed"
   performedAt DateTime  @default(now())
+  performanceType String @default("observed") // "independent" | "assisted" | "observed" 
   userId      String
   user        User      @relation(fields: [userId], references: [id])
   specialtyId String

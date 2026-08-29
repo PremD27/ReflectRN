@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import ComfortSlider from "@/app/ui/comfort-slider";
 import EnjoymentSlider from "@/app/ui/enjoyment-slider";
 import EmotionSelector from "@/app/ui/emotion-selector";
+import PerformanceTypeSelector from "@/app/ui/performance-type-selector";
 
 export default async function Page( { params }: { params: Promise<{ id: string }> } ) {
     const { id } = await params;
@@ -36,6 +37,7 @@ export default async function Page( { params }: { params: Promise<{ id: string }
                 <ComfortSlider defaultValue={procedure.comfort}/>
                 <EnjoymentSlider defaultValue={procedure.enjoyment}/>
                 <EmotionSelector defaultValue={procedure.emotion}/>
+                <PerformanceTypeSelector defaultValue={procedure.performanceType}/>
         
                 <div>
                   <label className="mb-2 block text-sm font-medium text-ink/70">Notes</label>
@@ -65,5 +67,5 @@ export default async function Page( { params }: { params: Promise<{ id: string }
                 </button>
               </form>
             </div>
-        );
+    );
 }

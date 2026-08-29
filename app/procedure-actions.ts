@@ -15,6 +15,7 @@ export async function createProcedure(specialtyId: string, from: string | undefi
     const enjoyment = Number(formData.get('procedure-enjoyment')) as number;
     const emotion = (formData.get('procedure-emotion') as string) ?? 'confident';
     const performedAt = new Date(formData.get('procedure-performedAt') as string);
+    const performanceType = formData.get('procedure-performanceType') as string;
 
     // Get userId
     const USER_ID = await requireUserId();
@@ -30,6 +31,7 @@ export async function createProcedure(specialtyId: string, from: string | undefi
             enjoyment,
             emotion,
             performedAt,
+            performanceType,
             userId: USER_ID,
             specialtyId,
         }
@@ -114,6 +116,7 @@ export async function updateProcedure(id: string, formData: FormData) {
     const enjoyment = Number(formData.get('procedure-enjoyment')) as number;
     const emotion = formData.get('procedure-emotion') as string;
     const performedAt = new Date(formData.get('procedure-performedAt') as string);
+    const performanceType = formData.get('procedure-performanceType') as string;
 
     // Get userId
     const USER_ID = await requireUserId();
@@ -130,6 +133,7 @@ export async function updateProcedure(id: string, formData: FormData) {
             enjoyment,
             emotion,
             performedAt,
+            performanceType,
         }
     });
 
