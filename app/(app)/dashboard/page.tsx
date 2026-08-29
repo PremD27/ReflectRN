@@ -110,7 +110,7 @@ export default async function Page() {
                     }`}>
                       {procedure.emotion}
                     </span>
-                    <span className={`rounded-full px-2 py-0.5 text-xs font-medium capitalize "bg-gray-100 text-gray-700"`}>
+                    <span className="rounded-full bg-black/5 px-2 py-0.5 text-xs font-medium capitalize text-ink/60">
                       {procedure.performanceType}
                     </span>
                   </div>
