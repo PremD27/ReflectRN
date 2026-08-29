@@ -76,6 +76,12 @@ export default async function Page({
               <span className="text-2xl text-ink/30"> / 5</span>
             </p>
           </div>
+          <div className="px-8 py-8">
+            <p className="text-sm font-medium text-ink/50">Performance</p>
+            <p className="mt-2 font-serif text-3xl capitalize text-ink">
+              {procedure.performanceType}
+            </p>
+          </div>
         </div>
 
         <div className="border-b border-black/5 px-8 py-8">

@@ -23,7 +23,7 @@ export default function ProcedureListItem({
     <li>
       <Link
         href={href}
-        className="grid grid-cols-[1fr_auto_auto_auto_auto] items-center gap-6 px-5 py-3 text-sm transition hover:bg-black/[0.02]"
+        className="grid grid-cols-[1fr_auto_auto_auto_auto_auto] items-center gap-6 px-5 py-3 text-sm transition hover:bg-black/[0.02]"
       >
         <div className="min-w-0">
           <p className="truncate font-medium text-ink">{procedure.name}</p>
@@ -52,6 +52,10 @@ export default function ProcedureListItem({
           }`}
         >
           {procedure.emotion}
+        </span>
+
+        <span className="justify-self-start whitespace-nowrap rounded-md bg-black/5 px-2.5 py-1 text-xs font-medium capitalize text-ink/60">
+          {procedure.performanceType}
         </span>
 
         <span className="text-ink/20">→</span>
