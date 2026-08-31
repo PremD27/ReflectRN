@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Lora, Inter } from "next/font/google";
-import Sidebar from "./ui/sidebar";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 

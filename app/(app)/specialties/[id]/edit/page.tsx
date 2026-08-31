@@ -1,13 +1,20 @@
-import { createSpecialty } from "@/app/specialty-actions";
+import { getSpecialty, updateSpecialty } from "@/app/specialty-actions";
+import { notFound } from "next/navigation";
 
-export default function Page() {
+
+export default async function Page({ id }: { id: string }) {
+  const updateSpecialtyWithId = updateSpecialty.bind(null, id);
+  const specialty = await getSpecialty(id);
+
+  if (!specialty) notFound();
+
   return (
     <div className="mx-auto max-w-xl px-10 py-12">
       <p className="text-xs font-medium uppercase tracking-wide text-sage-600">Specialty</p>
-      <h1 className="mt-1 mb-8 font-serif text-3xl text-ink">Add a Specialty</h1>
+      <h1 className="mt-1 mb-8 font-serif text-3xl text-ink">Edit a Specialty</h1>
 
       <form
-        action={createSpecialty}
+        action={updateSpecialtyWithId}
         className="rounded-lg border border-black/5 bg-white p-8"
       >
         <div className="mb-6">
@@ -15,7 +22,7 @@ export default function Page() {
           <input
             type="text"
             name="specialty-name"
-            placeholder="e.g. Emergency Medicine"
+            defaultValue={specialty.name}
             className="w-full rounded-lg border border-black/10 px-4 py-2 text-sm text-ink focus:border-sage-600 focus:outline-none"
           />
         </div>

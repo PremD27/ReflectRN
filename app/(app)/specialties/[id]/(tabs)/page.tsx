@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getProceduresBySpecialty } from "@/app/procedure-actions";
 import ProcedureListItem from "@/app/ui/procedures-list-item";
 
+
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const procedures = await getProceduresBySpecialty(id);
